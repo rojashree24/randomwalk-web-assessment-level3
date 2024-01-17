@@ -7,12 +7,13 @@ let oWins = 0; // Keeps track of the number of wins for player "O"
 let playerXName = "";
 let playerOName = "";
 
- const playerXInput = document.getElementById("playerX");
- const playerOInput = document.getElementById("playerO");
+//  const playerXInput = document.getElementById("playerX");
+//  const playerOInput = document.getElementById("playerO");
 
   // playerXInput.addEventListener("input", () => {
   //   playerXName = playerXInput.value;
   //   updateScoreboard();
+  
   // });
 
   // playerOInput.addEventListener("input", () => {
@@ -44,7 +45,7 @@ const restartButton = document.getElementById("restart");
 const xWinsElement = document.getElementById("x-wins");
 const oWinsElement = document.getElementById("o-wins");
 
-const result=document.getElementById("res");
+
 
 // Adds a click event listener to each cell on the game board
 cells.forEach((cell) => cell.addEventListener("click", handleMove));
@@ -75,6 +76,12 @@ function handleMove(index) {
   }
 }
 
+/**
+ * The function checks if any of the winning conditions in a tic-tac-toe game are met.
+ * @returns a boolean value. It returns true if any of the winning conditions are met, indicating that
+ * a player has won the game. It returns false if none of the winning conditions are met, indicating
+ * that the game is still ongoing.
+ */
 function checkWin() {
   // Check all winning conditions
   for (let condition of winningConditions) {
@@ -139,8 +146,8 @@ function restartGame(){
    // Update the status with the current player's turn
    updateStatus(`It's ${currentPlayer}'s turn`);
    xWins=0,oWins=0;
-   xWinsElement.textContent = `Player 1[X]: 0`;
-   oWinsElement.textContent = `Player 2[O]: 0`;
+   xWinsElement.textContent = "Player 1[X]: 0";
+   oWinsElement.textContent = "Player 2[O]: 0";
 }
 
 // Add event listener to the restart button to call the restartGame function
@@ -149,18 +156,3 @@ restartButton.addEventListener("click", restartGame);
 // Update the status with the current player's turn
 updateStatus(`It's ${currentPlayer}'s turn`);
  
-function endGame(){
-  if(xWins>oWins){
-    result.innerText="Player 1 Won"
-    // alert('Congratulations Player X! You have won this game');
-  }
-  if(oWins>xWins){
-    result.innerText = "Player 2 Won";
-    // alert('Bummer, Player O has won this time!')
-  }
-  else{
-    result.textContent = "Draw";
-    // alert('This is a draw!')
-  }
-  console.log(xWins,oWins);
-}
